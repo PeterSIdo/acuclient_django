@@ -1,0 +1,13 @@
+.env # Ignore environment variables file
+myenv/   # Ignore virtual environment directory
+.idea/  # Ignore JetBrains IDE files
+.vscode/ # Ignore Visual Studio Code files
+__pycache__/ # Ignore Python cache files
+node_modules/   
+package-lock.json
+package.json
+*.py[cod]
+*.pyo
+*.pyd
+*.db
+*.sqlite3

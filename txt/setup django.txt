@@ -1,0 +1,17 @@
+set up Django project
+# Create a new directory for the project
+mkdir acuclient_django
+cd acuclient_django
+# Create a virtual environment
+python -m venv venv
+# Activate the virtual environment
+# On Windows:
+venv\Scripts\activate
+# On Unix/MacOS:
+source venv/bin/activate
+# Install Django and required packages
+pip install django pymongo python-dotenv
+# Create Django project
+django-admin startproject acuclient .
+# Create Django app
+python manage.py startapp clients
