@@ -1,3 +1,0 @@
-connection string
-
-mongodb+srv://caresoftdevelop:Kecskegida2017@cluster0.cxv3j.mongodb.net/acu_clients_db?retryWrites=true&w=majority&ssl=true
