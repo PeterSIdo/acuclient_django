@@ -3,6 +3,12 @@ from pathlib import Path
 import os
 from dotenv import load_dotenv
 load_dotenv()
+
+
+print(f"MONGO_DB_URI: {os.getenv('MONGO_DB_URI')}")
+print(f"DB_NAME: {os.getenv('DB_NAME')}")
+
+
 BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.getenv('SECRET_KEY', 'your-default-secret-key')
 DEBUG = True
@@ -14,6 +20,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'djongo',
     'clients.apps.ClientsConfig',
 ]
 MIDDLEWARE = [
@@ -48,26 +55,28 @@ WSGI_APPLICATION = 'acuclient.wsgi.application'
 
 # c:/Users/Peter/acuclient-django/clients/settings.py |||
 # MongoDB database configuration
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
+
 DATABASES = {
     'default': {
         'ENGINE': 'djongo',
-        'NAME': 'acu_clients_db',
+        'NAME': os.getenv('DB_NAME'),
         'ENFORCE_SCHEMA': False,
         'CLIENT': {
-            'host': os.getenv('MONGO_URI', 'mongodb://localhost:27017/'),
-            'username': os.getenv('MONGO_USERNAME', ''),
-            'password': os.getenv('MONGO_PASSWORD', ''),
-            'authSource': os.getenv('MONGO_AUTH_SOURCE', 'admin'),
-            'authMechanism': 'SCRAM-SHA-1'
+            'host': os.getenv('MONGO_DB_URI'),
+            'username': os.getenv('MONGO_DB_USER'),
+            'password': os.getenv('MONGO_DB_PASSWORD'),
+            'authMechanism': 'SCRAM-SHA-1',
         }
     }
 }
-# Add djongo to INSTALLED_APPS
-INSTALLED_APPS = [
-    'djongo',
-    'clients',
-]
 
+
+# Database router to handle MongoDB operations
+DATABASE_ROUTERS = ['clients.routers.MongoRouter']
 # Database router to handle MongoDB operations
 DATABASE_ROUTERS = ['clients.routers.MongoRouter']
 
