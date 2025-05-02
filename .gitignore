@@ -1,0 +1,16 @@
+.env
+myenv/
+.vscode/
+txt/
+.idea/
+.vscode/
+__pycache__/
+node_modules/  
+package-lock.json
+package.json
+*.py[cod]
+*.pyo
+*.pyd
+*.db
+*.sqlite3
+supportcodes/
